@@ -1,0 +1,5 @@
+stolon (0.17.0-1) unstable; urgency=medium
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Mikhail Shurutov <shurutov@gmail.com>  Thu, 16 Mar 2023 07:46:28 +0300

@@ -1,0 +1,117 @@
+### common stolon options ###
+# cluster name
+STOLONOPTS+="--cluster-name stolon_cluster"
+## the k8s resource kind to be used to store stolon clusterdata and do
+# sentinel leader election (only "configmap" is currently supported)
+#STOLONOPTS+=" --kube-resource-kind 'configmap'"
+# enable color in log output (default if attached to a terminal)
+#STOLONOPTS+=" --log-color"
+# debug, info (default), warn or error (default "info")
+STOLONOPTS+=" --log-level error"
+# metrics listen address i.e "0.0.0.0:8080" (disabled by default)
+STOLONOPTS+=" --metrics-listen-address '0.0.0.0:8080'"
+# store backend type (etcdv2/etcd, etcdv3, consul or kubernetes)
+STOLONOPTS+=" --store-backend etcdv3"
+# verify certificates of HTTPS-enabled store servers using this CA bundle
+#STOLONOPTS+=" --store-ca-file <CA-filename>"
+# a comma-delimited list of store endpoints (use https scheme for tls
+# communication) (defaults: http://127.0.0.1:2379 for etcd,
+# http://127.0.0.1:8500 for consul)
+STOLONOPTS+=" --store-endpoints http://127.0.0.1:2379"
+# the store base prefix (default "stolon/cluster")
+#STOLONOPTS+=" --store-prefix string"
+
+### stolon-sentinel options ###
+## a file providing the initial cluster specification, used only at cluster
+# initialization, ignored if cluster is already initialized
+#STOLON_SENTINEL_OPTS+=" --initial-cluster-spec <string>"
+# certificate file for client identification to the store
+#STOLON_SENTINEL_OPTS+=" --store-cert-file <cert-filename>"
+# private key file for client identification to the store
+#STOLON_SENTINEL_OPTS+=" --store-key string"
+# skip store certificate verification (insecure!!!)
+#STOLON_SENTINEL_OPTS+=" --store-skip-tls-verify"
+# store request timeout (default 5s)
+#STOLON_SENTINEL_OPTS+="--store-timeout duration"
+
+### stolon-keeper optionsn ###
+# prevent keeper from being elected as master (default true)
+#STOLON_KEEPER_OPTS+=" --can-be-master"
+# prevent keeper from being chosen as synchronous replica (default true)
+#STOLONOPTS+=" --can-be-synchronous-replica"
+# data directory
+#STOLON_KEEPER_OPTS+=" --data-dir <path>"
+## disable locking on data dir. Warning! It'll cause data corruptions if
+# two keepers are concurrently running with the same data dir.
+#STOLON_KEEPER_OPTS+=" --disable-data-dir-locking"
+# postgresql instance address from outside. Use it to expose ip different
+# than local ip with a NAT networking config
+#STOLON_KEEPER_OPTS+=" --pg-advertise-address string"
+# postgresql instance port from outside. Use it to expose port different
+# than local port with a PAT networking config
+#STOLON_KEEPER_OPTS+=" --pg-advertise-port string"
+# absolute path to postgresql binaries. If empty they will be searched
+# in the current PATH
+#STOLON_KEEPER_OPTS+=" --pg-bin-path string"
+# postgresql instance listening address, local address used for the postgres
+# instance. For all network interface, you can set the value to '*'.
+#STOLON_KEEPER_OPTS+=" --pg-listen-address string"
+# postgresql instance listening port (default "5432")
+#STOLON_KEEPER_OPTS+=" --pg-port string"
+# postgres replication user auth method. Default is md5. (default "md5")
+#STOLON_KEEPER_OPTS+=" --pg-repl-auth-method string"
+# postgres replication user password. Only one of --pg-repl-password or
+# --pg-repl-passwordfile must be provided. Must be the same for all keepers.
+#STOLON_KEEPER_OPTS+=" --pg-repl-password string"
+# postgres replication user password file. Only one of --pg-repl-password or
+# --pg-repl-passwordfile must be provided. Must be the same for all keepers.
+#STOLON_KEEPER_OPTS+=" --pg-repl-passwordfile string"
+# postgres replication user name. Required. It'll be created on db
+# initialization. Must be the same for all keepers.
+#STOLON_KEEPER_OPTS+=" --pg-repl-username string"
+# postgres superuser auth method. Default is md5. (default "md5")
+#STOLON_KEEPER_OPTS+=" --pg-su-auth-method string"
+# postgres superuser password. Only one of --pg-su-password or
+# --pg-su-passwordfile must be provided. Must be the same for all keepers.
+#STOLON_KEEPER_OPTS+=" --pg-su-password string"
+# postgres superuser password file. Only one of --pg-su-password or
+# --pg-su-passwordfile must be provided. Must be the same for all keepers)
+#STOLON_KEEPER_OPTS+=" --pg-su-passwordfile string"
+# postgres superuser user name. Used for keeper managed instance access and
+# pg_rewind based synchronization. It'll be created on db initialization.
+# Defaults to the name of the effective user running stolon-keeper.
+# Must be the same for all keepers.
+#STOLON_KEEPER_OPTS+=" --pg-su-username string"
+# certificate file for client identification to the store
+#STOLON_KEEPER_OPTS+=" --store-cert-file string"
+# private key file for client identification to the store
+#STOLON_KEEPER_OPTS+=" --store-key string"
+# skip store certificate verification (insecure!!!)
+#STOLON_KEEPER_OPTS+=" --store-skip-tls-verify"
+# store request timeout (default 5s)
+#STOLON_KEEPER_OPTS+=" --store-timeout duration"
+# keeper uid (must be unique in the cluster and can contain only lower-case
+# letters, numbers and the underscore character). If not provided a random
+# uid will be generated.
+#STOLON_KEEPER_OPTS+=" --uid string"
+
+### stolon proxy options ###
+# proxy listening address (default "127.0.0.1")
+#STOLON_PROXY_OPTS+=" --listen-address string"
+# proxy listening port (default "5432")
+#STOLON_PROXY_OPTS+=" --port string"
+# stop listening on store error (default true)
+#STOLON_PROXY_OPTS+=" --stop-listening"
+# certificate file for client identification to the store
+#STOLON_PROXY_OPTS+=" --store-cert-file string"
+# private key file for client identification to the store
+#STOLON_PROXY_OPTS+=" --store-key string"
+# store request timeout (default 5s)
+#STOLON_PROXY_OPTS+=" --store-timeout duration"
+# set tcp keepalive probe count number
+#STOLON_PROXY_OPTS+=" --tcp-keepalive-count int"
+# set tcp keepalive idle (seconds)
+#STOLON_PROXY_OPTS+=" --tcp-keepalive-idle int"
+# set tcp keepalive interval (seconds)
+#STOLON_PROXY_OPTS+=" --tcp-keepalive-interval int"
+

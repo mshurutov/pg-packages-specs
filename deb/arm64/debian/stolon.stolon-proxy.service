@@ -1,0 +1,13 @@
+[Unit]
+Description=proxy client's access point. It enforce connections to the right PostgreSQL master and forcibly closes connections to old masters.
+Documentation=https://github.com/sorintlab/stolon/blob/master/doc/architecture.md https://github.com/sorintlab/stolon/blob/master/doc/commands/stolon-proxy.md
+After=network.target
+
+[Service]
+EnvironmentFile=-/etc/default/stolon
+ExecStart=/usr/bin/stolon-proxy ${STOLONOPTS} ${STOLON_PROXY_OPTS}
+
+[Install]
+WantedBy=multi-user.target
+
+

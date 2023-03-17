@@ -1,0 +1,12 @@
+[Unit]
+Description=keeper manages a PostgreSQL instance converging to the clusterview provided by the sentinel(s).
+Documentation=https://github.com/sorintlab/stolon/blob/master/doc/architecture.md https://github.com/sorintlab/stolon/blob/master/doc/commands/stolon-keeper.md
+After=network.target
+
+[Service]
+EnvironmentFile=-/etc/default/stolon
+ExecStart=/usr/bin/stolon-keeper ${STOLONOPTS} ${STOLON_KEEPER_OPTS}
+
+[Install]
+WantedBy=multi-user.target
+

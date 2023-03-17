@@ -1,0 +1,12 @@
+[Unit]
+Description=sentinel discovers and monitors keepers and calculates the optimal clusterview.
+Documentation=https://github.com/sorintlab/stolon/blob/master/doc/architecture.md https://github.com/sorintlab/stolon/blob/master/doc/commands/stolon-sentinel.md
+After=network.target
+
+[Service]
+EnvironmentFile=-/etc/default/stolon
+ExecStart=/usr/bin/stolon-sentinel ${STOLONOPTS} ${STOLON_SENTINEL_OPTS}
+
+[Install]
+WantedBy=multi-user.target
+

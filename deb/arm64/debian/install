@@ -1,0 +1,5 @@
+bin/stolonctl /usr/bin
+bin/stolon-keeper /usr/bin
+bin/stolon-proxy /usr/bin
+bin/stolon-sentinel /usr/bin
+
